@@ -1,9 +1,3 @@
-export type EventName = string;
-export type EmitterEvent = {
-  eventName: string,
-  data: unknown
-};
-
 export interface IAPI {
   getProductList: () => Promise<IProd[]>;
     getProductItem: (id: string) => Promise<IProd>;
