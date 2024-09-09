@@ -1,7 +1,37 @@
+export type EventName = string;
+export type EmitterEvent = {
+  eventName: string,
+  data: unknown
+};
+
+export interface IAPI {
+  getProductList: () => Promise<IProd[]>;
+    getProductItem: (id: string) => Promise<IProd>;
+}
+
+export interface IAppState {
+  catalog: IProd[];
+  basket: string[];
+  preview: string | null;
+  order: IOrder | null;
+  loading: boolean;
+}
+
 export interface IPage {
   counter: number;            // Кол-во элементов
   catalogue: HTMLElement[];   // Каталог элементов
   locked: boolean;
+}
+
+export interface ICard<T> {
+  id: string;
+  category?: string;
+  title: string;
+  image?: string;
+  price: number;
+  description?: string | string[];
+  itemIndex: number;
+  button: IProd[];
 }
 
 export interface IGallery {
@@ -61,9 +91,6 @@ export interface IAct {
   onClick: (evt: MouseEvent) => void;  // Функция клика
 }
 
-export interface IActS {
-  onClick: () => void;   // Функция успешного клика
-}
 
 export interface IState {
   validation: boolean;   // Валиадция 
